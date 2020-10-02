@@ -3,6 +3,7 @@ package Helper;
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -29,6 +30,9 @@ public class BrowserFactory {
 			cap.setBrowserName(BrowserType.IE);
 			driver = new RemoteWebDriver(new URL("http://localhost:4545/wd/hub"), cap);
 			
+		} else if(browserName.equalsIgnoreCase("LOCAL")) {
+			System.setProperty("webdriver.chrome.driver", "/Users/smuthama/eclipse-workspace/installer/Drivers/chromedriver");
+			driver = new ChromeDriver();
 		}
 		
 		driver.manage().window().maximize();
